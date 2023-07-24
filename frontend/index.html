@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="htmx.min.js"></script>
+    <title>Document</title>
+
+    <style>
+        .feature{
+            margin-bottom: 20px;
+        }
+        #fade-me-in.htmx-added {
+            opacity: 0;
+        }
+
+        #fade-me-in {
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+    </style>
+
+    
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-10 pt-3">
+                <div class="feature">
+                    <h1>1. Easy AJAX</h1>
+            
+                    <button class="btn btn-success"
+                    hx-post="http://localhost:1330/message" 
+                    hx-target="#ajax-result">
+                        Fetch Results
+            
+                    </button>
+            
+                    <p id="ajax-result"></p>
+                </div>
+                
+                <div class="feature">
+                    <h1>2. Animations</h1>
+            
+                    <button id="fade-me-in" class="btn btn-primary"
+                    hx-get="http://localhost:1330/" 
+                    hx-swap="outerHTML settle:1s"
+                    hx-target="#animation-result">
+                        Fade Me In
+            
+                    </button>
+            
+                    <div id="animation-result"></div>
+            
+                </div>
+            
+                <div class="feature">
+                    <h1>3. WebSockets</h1>
+            
+                    <div hx-ws="connect:ws://localhost:5000">
+                        <div id="chat_box"></div>
+            
+                        <form hx-ws="send">
+                            <input name="chat_message" />
+                            <button type="submit" class="btn btn-danger">Send</button>
+                        </form>
+                    </div>
+            
+                </div>
+            
+                <div class="feature">
+                    <h1>4. Events & Logging</h1>
+                    <ul>
+                        <li>Logging Events</li>
+                        <li>Subscribe to Events</li>
+                        <li>Modify Behaviour within Events</li>
+                        <li>Configure AJAX Requests</li>
+                        
+                    </ul>
+                </div>
+            
+                <div class="feature">
+                    <h1>5. Custom Scripting</h1>
+                    <ul>
+                        <li>Hook Custom Scripts into Event Handlers</li>
+                        <li>Integrate 3rd-party scripts through events</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    
+    
+
+<script>
+    //Logging 
+    /* htmx.logger = function (elt, event, data) {
+        console.log(event, elt, data)
+    } */
+
+    //Event Subscription
+    /* document.body.addEventListener('htmx:load', (event) => {
+        console.log(event.detail.elt);
+    }) */
+</script>
+</body>
+</html>
